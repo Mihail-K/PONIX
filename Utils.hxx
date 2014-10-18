@@ -3,11 +3,11 @@
 
 # include "Types.hxx"
 
-class Utils {
-public:
-	static char *longToStr(long value, char *buffer, int base);
+namespace Utils {
 
-	static char *ulongToStr(ulong value, char *buffer, int base);
+	char *longToStr(long value, char *buffer, int base);
+
+	char *ulongToStr(ulong value, char *buffer, int base);
 
 };
 

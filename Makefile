@@ -9,7 +9,7 @@ LDFLAGS = -T Linker.ld -nostdlib -O2 -L/usr/local/cross/lib/gcc/i686-elf/4.9.0
 CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -Werror
 CXXFLAGS = -std=gnu++11 -ffreestanding -O2 -Wall -Wextra -Werror -fno-exceptions -fno-rtti
 
-objects = Start.o Kmain.o Console.o Utils.o
+objects = Start.o Kmain.o Console.o Utils.o GDT.o
 
 all: Kernel.bin
 

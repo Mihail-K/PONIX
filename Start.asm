@@ -19,8 +19,8 @@ MbootHeader:
 Start:
 	movl $StackStart, %esp
 
-	pushl %eax
 	pushl %ebx
+	pushl %eax
 
 	call Kmain
 	cli
