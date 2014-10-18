@@ -1,5 +1,8 @@
 
+# include <stdarg.h>
+
 # include "Console.hxx"
+# include "Utils.hxx"
 
 ubyte *Console::vram = (ubyte *)(0xB8000);
 ubyte Console::color = 0x0E;
@@ -13,7 +16,7 @@ void Console::Clear() {
 	xpos = ypos = 0;
 }
 
-void Console::Write(byte ch) {
+void Console::Write(char ch) {
 	switch(ch) {
 		case '\t':
 			xpos += 8 - (xpos % 8);

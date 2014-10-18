@@ -1,6 +1,7 @@
 
 # include "Types.hxx"
 # include "Console.hxx"
+# include "Utils.hxx"
 
 extern "C"
 void Kmain(uint magic, void *header) {
@@ -9,8 +10,8 @@ void Kmain(uint magic, void *header) {
 
 	Console::Clear();
 	Console::Write("Started!\n");
-	Console::Write("Some more text.\n");
-	Console::Write((string)NULL);
+	Console::Write("Hello %, I am % (%).\n", "there", "PONIX", Hex<int>(4096));
+
 	for(;;) { }
 }
 

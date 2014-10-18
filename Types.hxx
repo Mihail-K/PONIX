@@ -9,14 +9,8 @@
 
 # define byte int8_t
 # define ubyte uint8_t
-
-# define short int16_t
 # define ushort uint16_t
-
-# define int int32_t
 # define uint uint32_t
-
-# define long int64_t
 # define ulong uint64_t
 
 # define uchar uint8_t
@@ -27,6 +21,45 @@ typedef const char *string;
 typedef const uchar *ustring;
 typedef const wchar *wstring;
 typedef const uwchar *uwstring;
+
+template<typename T>
+struct Number {
+
+	T value;
+	int base;
+
+	Number(T value, int base)
+	: value(value), base(base) {
+	}
+
+};
+
+template<typename T>
+struct Bin : Number<T> {
+
+	Bin(T value)
+	: Number<T>(value, 2) {
+	}
+
+};
+
+template<typename T>
+struct Dec : Number<T> {
+
+	Dec(T value)
+	: Number<T>(value, 10) {
+	}
+
+};
+
+template<typename T>
+struct Hex : Number<T> {
+
+	Hex(T value)
+	: Number<T>(value, 16) {
+	}
+
+};
 
 # endif /* Types.hxx */
 
