@@ -17,13 +17,13 @@ MbootHeader:
 .section .text
 
 Start:
-	movl StackStart, %esp
+	movl $StackStart, %esp
 
 	pushl %eax
 	pushl %ebx
 
 	call Kmain
-
+	cli
 
 KernelHang:
 	hlt

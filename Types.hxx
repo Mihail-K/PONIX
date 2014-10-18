@@ -17,6 +17,10 @@
 #	endif /* Architecture */
 # endif /* GCC */
 
+# ifndef NULL
+#	define NULL 0
+# endif /* NULL */
+
 typedef signed char int8_t;
 typedef unsigned char uint8_t;
 
@@ -48,7 +52,6 @@ typedef unsigned long long int uint64_t;
 # define long int64_t
 # define ulong uint64_t
 
-# define char int8_t
 # define uchar uint8_t
 # define wchar int16_t
 # define uwchar uint16_t

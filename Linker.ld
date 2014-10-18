@@ -5,20 +5,20 @@ SECTIONS {
 
 	. = 1M;
 
-	.text : {
+	.text BLOCK(4K) : ALIGN(4K) {
 		*(.mboot)
 		*(.text)
 	}
 
-	.rodata ALIGN(4096) : {
+	.rodata BLOCK(4K) : ALIGN(4K) {
 		*(.rodata)
 	}
 
-	.data ALIGN(4096) : {
+	.data BLOCK(4K) : ALIGN(4K) {
 		*(.data)
 	}
 
-	.bss ALIGN(32) : {
+	.bss BLOCK(4K) : ALIGN(4K) {
 		*(COMMON)
 		*(.bss)
 	}
