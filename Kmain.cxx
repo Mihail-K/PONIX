@@ -1,11 +1,14 @@
 
 # include "Types.hxx"
+# include "Console.hxx"
 
 extern "C"
 void Kmain(uint magic, void *header) {
-	*((char *)0xB8000) = 'A';
-	*((char *)0xB8002) = 'A';
-	*((char *)0xB8004) = 'A';
+	((void)magic);
+	((void)header);
+
+//	Console::Clear();
+	Console::Write("Started!\n");
 	for(;;) { }
 }
 
