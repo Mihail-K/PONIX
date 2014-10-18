@@ -35,3 +35,7 @@
 *.bak
 *.buf
 
+# Other Files
+*.iso
+iso/
+
