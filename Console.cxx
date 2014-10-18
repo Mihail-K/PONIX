@@ -37,7 +37,7 @@ void Console::Write(byte ch) {
 
 void Console::Write(string str) {
 	if(str == NULL) Write("<NULL>");
-	while(*str) Write(*str++);
+	else while(*str) Write(*str++);
 }
 
 void Console::SetBounds(int rows, int cols) {
