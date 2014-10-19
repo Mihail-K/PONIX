@@ -27,7 +27,6 @@ struct GDTDescriptor descriptor;
 
 void GDT::CreateEntry(int id, uint base, uint limit, ushort flags) {
 	struct GDTEntry *entry = &entries[id];
-	Console::Write("Creating GDT Entry(ID:%).\n", Dec<int>(id));
 
 	entry->limit0 = (ushort)(limit & 0xFFFF);
 	entry->limit1 = (ubyte)((limit >> 16) & 0xF);
@@ -38,13 +37,9 @@ void GDT::CreateEntry(int id, uint base, uint limit, ushort flags) {
 
 	entry->access = (ubyte)(flags & 0xFF);
 	entry->flags = (ubyte)((flags >> 8) & 0xF);
-
-	Console::Write("Finished creating entry!\n");
 }
 
 void GDT::Commit(int count) {
-	Console::Write("Installing % GDT entries.\n", Dec<int>(count));
-
 	descriptor.size = sizeof(GDTEntry) * count - 1;
 	descriptor.offset = (uint)(void *)&entries;
 
@@ -57,7 +52,7 @@ void GDT::Commit(int count) {
 	__asm__("jmp $0x8, $GDT_Commit_End");
 	__asm__("GDT_Commit_End:");
 
-	Console::Write("Finished installing entries!\n");
+	Console::Write("Installed % GDT entries.\n", Dec<int>(count));
 }
 
 

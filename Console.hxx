@@ -42,9 +42,9 @@ public:
 		Write(Utils::ulongToStr(value, tmp, base));
 	}
 
-	template<typename T>
-	inline static void Write(Number<T> num) {
-		Write(num.value, num.base);
+	template<typename T, int B>
+	inline static void Write(Number<T, B> num) {
+		Write(num.value, Number<T, B>::base);
 	}
 
 	template<typename T1, typename...T>

@@ -1,4 +1,5 @@
 
+.file "Start.asm"
 .extern Kmain
 
 .set FLAGS, 1 + 2
@@ -8,10 +9,10 @@
 .set PRESENT, 1 << 0
 .set READWRITE, 1 << 1
 .set LARGEPAGE, 1 << 7
-.set ENTRYCOUNT, 1024
 
 .set VOFFSET, 0xC0000000
 
+// Multiboot Header
 .section .mboot
 .align 4
 
@@ -20,6 +21,7 @@ MbootHeader:
 	.long FLAGS
 	.long CHECKSUM
 
+// Kernel Page Directory
 .section .data
 .align 4096
 
@@ -30,6 +32,7 @@ PageDirectory:
 	.long PRESENT | READWRITE | LARGEPAGE
 	.fill 1024 - 786, 4, 0
 
+// Start (Lower Half)
 .section .textlow
 .align 4
 
@@ -52,6 +55,7 @@ StartLow:
 	leal (Start), %ecx
 	jmp *%ecx
 
+// Start (Higher Half)
 .section .text
 .align 4
 
@@ -73,6 +77,7 @@ KernelHang:
 	cli
 	jmp KernelHang
 
+// Kernel Stack
 .section .bss
 .align 32
 

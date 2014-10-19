@@ -22,41 +22,42 @@ typedef const uchar *ustring;
 typedef const wchar *wstring;
 typedef const uwchar *uwstring;
 
-template<typename T>
+template<typename T, int B>
 struct Number {
 
 	T value;
-	int base;
 
-	Number(T value, int base)
-	: value(value), base(base) {
+	enum { base = B };
+
+	Number(T value)
+	: value(value) {
 	}
 
 };
 
 template<typename T>
-struct Bin : Number<T> {
+struct Bin : Number<T, 2> {
 
 	Bin(T value)
-	: Number<T>(value, 2) {
+	: Number<T, 2>(value) {
 	}
 
 };
 
 template<typename T>
-struct Dec : Number<T> {
+struct Dec : Number<T, 10> {
 
 	Dec(T value)
-	: Number<T>(value, 10) {
+	: Number<T, 10>(value) {
 	}
 
 };
 
 template<typename T>
-struct Hex : Number<T> {
+struct Hex : Number<T, 16> {
 
 	Hex(T value)
-	: Number<T>(value, 16) {
+	: Number<T, 16>(value) {
 	}
 
 };

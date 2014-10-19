@@ -4,16 +4,18 @@
 # include "Console.hxx"
 # include "Utils.hxx"
 
-ubyte *Console::vram = (ubyte *)(0xB8000);
-ubyte Console::color = 0x0E;
+ubyte *Console::vram = (ubyte *)0xC00B8000;
+ubyte Console::color = 0xF3;
 
 int Console::xpos = 0, Console::ypos = 0;
 int Console::xlim = 80, Console::ylim = 25;
 
 void Console::Clear() {
-	for(int i = 0; i < xlim * ylim * 2; i++)
-		vram[i] = 0;
 	xpos = ypos = 0;
+	for(int i = 0; i < xlim * ylim * 2;) {
+		vram[i++] = '\0';
+		vram[i++] = color;
+	}
 }
 
 void Console::Write(char ch) {
@@ -35,6 +37,19 @@ void Console::Write(char ch) {
 	if(xpos >= xlim) {
 		xpos = 0;
 		ypos++;
+	}
+	if(ypos >= ylim) {
+		int limit = xlim * (ylim - 1) * 2;
+		for(int i = 0; i < xlim * ylim * 2;) {
+			if(i >= limit) {
+				vram[i++] = '\0';
+				vram[i++] = color;
+			} else {
+				vram[i] = vram[i + xlim * 2];
+				i++;
+			}
+		}
+		ypos--;
 	}
 }
 

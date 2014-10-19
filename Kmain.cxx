@@ -18,6 +18,8 @@ void Kmain(uint magic, void *header) {
 	((void)header);
 
 	Console::Clear();
+	Console::SetCursor(24, 0);
+
 	Assert(magic == 0x2BADB002);
 
 	KernelSetup(header);
