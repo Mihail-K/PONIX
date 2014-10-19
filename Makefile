@@ -10,7 +10,7 @@ CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -Werror
 CXXFLAGS = -std=gnu++11 -ffreestanding -O2 -Wall -Wextra -Werror -fno-exceptions -fno-rtti
 
 image = Kernel.iso
-objects = Start.o Kmain.o Console.o Utils.o GDT.o IDT.o
+objects = Start.o Kmain.o Console.o Utils.o GDT.o IDT.o Interrupts.o InterruptRoutines.o
 
 all: $(image) Kernel.bin
 
